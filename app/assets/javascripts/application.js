@@ -16,3 +16,13 @@
 //= require bootstrap
 //= require_tree .
 
+
+$(document).on('submit', '#sign_in_form', function(e) {
+            
+}).on('ajax:success', '#sign_in_form', function(e, data, status, xhr) {
+        $('#loginModal').modal('hide')
+        
+}).on('ajax:error', '#sign_in_form', function(e, data, status, xhr) {
+        alert(JSON.stringify(data))
+        $("#login_errors_div").html("<p class=\"alert alert-danger\">"+data.responseText+"</p>")
+});

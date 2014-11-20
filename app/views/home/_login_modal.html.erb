@@ -7,7 +7,14 @@
         <h4 class="modal-title" id="myModalLabel">Modal title</h4>
       </div>
       <div class="modal-body">
-        <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+        <%= form_for(resource, :as => resource_name, 
+        											 :url => session_path(resource_name),
+        											 :html => {:id => "sign_in_form"},
+        											 :format => :json,
+        											 :remote => true) do |f| %>
+
+        	<div id="login_errors_div"></div>
+
 					<div><%= f.label :email %><br />
 						<%= f.email_field :email, :autofocus => true %>
 					</div>
@@ -19,6 +26,7 @@
 					<% end -%>
 					<%= f.submit "Sign in", :class => 'btn btn-small btn-success' %>
 				<% end %>
+				<%= link_to "Sign in with Facebook", user_omniauth_authorize_path(:facebook) %>
       </div>
       <div class="modal-footer">
         <%= render "devise/shared/links" %>
