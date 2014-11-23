@@ -18,7 +18,7 @@
 
 
 $(document).on('submit', '#sign_in_form', function(e) {
-            xhr.setRequestHeader('X-CSRF-Token', $('meta[name="csrf-token"]').attr('content'))
+
 }).on('ajax:success', '#sign_in_form', function(e, data, status, xhr) {
         $('#nav-right-options').html(data.content)
         $('#loginModal').modal('hide')

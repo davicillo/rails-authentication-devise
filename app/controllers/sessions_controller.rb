@@ -6,6 +6,7 @@ class SessionsController  < Devise::SessionsController
 
   def create
     resource = warden.authenticate!(:scope => resource_name, :recall => '#{controller_path}#failure')
+    set_flash_message(:notice, :signed_in) if is_flashing_format?
     sign_in_and_redirect(resource_name, resource)
   end
  
